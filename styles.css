@@ -1,0 +1,612 @@
+:root {
+    --primary-color: #0a6638;
+    --text-color: #3d382e;
+    --light-bg: #f5f3f0;
+    --border-color: #ebe6df;
+    --muted-text: #595143;
+    --link-hover: #172e1d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+header {
+    background-color: white;
+    padding: 2rem 0;
+    margin-bottom: 3rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.header-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.image-container, .text-container {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+
+.image-container:hover, .text-container:hover {
+    transform: translateY(-2px);
+}
+
+.image-column {
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.image-column img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+.text-container {
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+}
+
+.price-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.price-column h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #0a6638;
+}
+
+.price {
+    font-size: 3.8rem;
+    font-weight: 700;
+    color: #0a6638;
+}
+
+.price-change {
+    font-size: 1rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+}
+
+.price-change.increase {
+    background-color: rgba(10,102,56,0.1);
+    color: var(--primary-color);
+}
+
+/* Optional: Add decrease style for future use */
+.price-change.decrease {
+    color: #d32f2f;
+    background-color: #d32f2f10;
+    font-weight: bold;
+}
+
+.price-subtitle {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+section {
+    margin-bottom: 3rem;
+}
+
+.chart-container {
+    margin: 2rem 0;
+    height: 400px;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #f4f4f4;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.price-cards {
+    margin: 3rem 0;
+}
+
+.price-cards h2 {
+    color: #0a6638;
+    margin: 2rem 0 1rem;
+}
+
+.location-cards, .seller-cards {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    min-width: 200px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: #0a6638;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.card .price {
+    color: #0a6638;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.card .subtitle {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Make cards responsive */
+@media (max-width: 768px) {
+    .location-cards, .seller-cards {
+        gap: 1rem;
+    }
+    
+    .card {
+        min-width: 150px;
+        padding: 1rem;
+    }
+    
+    .card .price {
+        font-size: 1.5rem;
+    }
+}
+
+.price-explanation {
+    margin: 2rem 0;
+    line-height: 1.8;
+    color: #333;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.price-explanation p {
+    text-align: justify;
+}
+
+.demand-chart-section {
+    margin: 4rem 0;
+}
+
+.demand-chart-section h3 {
+    color: #0a6638;
+    margin-bottom: 1rem;
+}
+
+.demand-chart-section p {
+    margin-bottom: 2rem;
+    color: #333;
+    max-width: 800px;
+}
+
+.main-headline {
+    max-width: 1200px;
+    margin: 3rem auto 2rem;
+    padding: 0 2rem;
+    color: #0a6638;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+#recommended-puppies {
+    background-color: white;
+    padding: 4rem 0;
+    margin: 4rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+#recommended-puppies h2 {
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    padding: 0 2rem;
+    color: #0a6638;
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+.puppies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.puppy-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.puppy-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.12);
+}
+
+.puppy-image {
+    aspect-ratio: 1;
+    overflow: hidden;
+}
+
+.puppy-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.puppy-details {
+    padding: 1.5rem;
+}
+
+.puppy-details h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+    color: var(--text-color);
+}
+
+.puppy-breed {
+    color: var(--muted-text);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.puppy-location {
+    color: var(--muted-text);
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+}
+
+.puppy-price {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+#related-links {
+    background-color: white;
+    padding: 4rem 0;
+    margin: 4rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.links-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    gap: 3rem;
+}
+
+.price-filtered-links h2,
+.breed-price-pages h2 {
+    color: #0a6638;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.link-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem 2rem;
+}
+
+.link-list li {
+    margin-bottom: 0.5rem;
+}
+
+.link-list a {
+    color: #444;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    transition: color 0.2s ease;
+    font-size: 1rem;
+}
+
+.link-list a:hover {
+    color: #0a6638;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .link-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .main-headline {
+        font-size: 2.2rem;
+        margin: 2rem auto 1.5rem;
+    }
+    
+    .header-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .price {
+        font-size: 3rem;
+    }
+    
+    #recommended-puppies,
+    #related-links {
+        padding: 3rem 0;
+        margin: 2rem 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .links-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Price Trends Section */
+#price-trends {
+    background-color: white;
+    padding: 4rem 0;
+    margin: 4rem 0;
+    box-shadow: 0 2px 4px rgba(21,27,60,0.1);
+}
+
+.trends-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.chart-section {
+    background: var(--light-bg);
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+.chart-section h2 {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.chart-container {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    height: 300px;
+}
+
+/* Related Links Section */
+#related-links {
+    background-color: white;
+    padding: 4rem 0;
+    margin: 4rem 0;
+    box-shadow: 0 2px 4px rgba(21,27,60,0.1);
+}
+
+.links-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.price-filtered-links,
+.breed-price-pages {
+    background: var(--light-bg);
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+.price-filtered-links h2,
+.breed-price-pages h2 {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.link-list li {
+    margin-bottom: 1rem;
+}
+
+.link-list a {
+    color: var(--text-color);
+    text-decoration: none;
+    display: block;
+    padding: 0.75rem 1rem;
+    background: white;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.link-list a:hover {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .trends-container,
+    .links-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #price-trends,
+    #related-links {
+        padding: 2rem 0;
+        margin: 2rem 0;
+    }
+
+    .chart-section,
+    .price-filtered-links,
+    .breed-price-pages {
+        padding: 1.5rem;
+    }
+
+    .chart-container {
+        height: 250px;
+    }
+}
+
+/* Update internal links styling */
+#internal-links {
+    background-color: white;
+    padding: 4rem 0;
+    margin: 4rem 0;
+    box-shadow: 0 2px 4px rgba(21,27,60,0.1);
+}
+
+.internal-links-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section-title {
+    color: var(--text-color);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.links-column {
+    background: var(--light-bg);
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+.column-title {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.internal-link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.internal-link-list li {
+    margin-bottom: 0.75rem;
+}
+
+.internal-link-list a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: block;
+    padding: 0.75rem 1rem;
+    background: white;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.internal-link-list a:hover {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+    .links-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    #internal-links {
+        padding: 2rem 0;
+        margin: 2rem 0;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .column-title {
+        font-size: 1.25rem;
+    }
+} 

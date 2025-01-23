@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="What's the price of a Golden Retriever puppy? Browse prices and get to know how popular Golden Retriever is in 2024.">
+    <title>Golden Retriever Price Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0a6638',
+                        textColor: '#3d382e',
+                        lightBg: '#f5f3f0',
+                        borderColor: '#ebe6df',
+                        mutedText: '#595143',
+                        linkHover: '#172e1d'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-lightBg text-textColor">
+    <!-- 1. Main header with price -->
+    <h1 class="max-w-7xl mx-auto px-8 py-12 text-4xl font-bold text-primary md:text-5xl">
+        Golden Retriever puppies average price
+    </h1>
+
+    <header class="bg-white shadow-md py-8 mb-12">
+        <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-10">
+            <div class="rounded-xl overflow-hidden">
+                <img src="./public/images/golden-retriever.jpg" 
+                     alt="Two happy Golden Retriever puppies sitting together in a field of orange flowers"
+                     class="w-full h-full object-cover">
+            </div>
+            <div class="flex items-center">
+                <div class="text-center w-full">
+                    <h2 class="text-2xl mb-4">Average Price</h2>
+                    <div class="mb-2">
+                        <span class="text-6xl font-bold text-primary">£599</span>
+                        <span class="ml-2 px-3 py-1 bg-primary/10 text-primary rounded-md">+2.3%</span>
+                    </div>
+                    <p class="text-mutedText">vs last month</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Price History and Distribution -->
+    <section class="bg-white shadow-md py-16 mb-16">
+        <div class="max-w-7xl mx-auto px-8">
+            <h2 class="text-3xl font-semibold mb-6">How much does a Golden Retriever puppy cost?</h2>
+            <p class="text-mutedText text-lg mb-12 max-w-4xl">
+                The average Golden Retriever puppy price of £300 on Pets4Homes reflects a market with significant variation. Prices range from £200 to £3,000, influenced by factors like breeder reputation, puppy lineage, location, and current market demand. Potential owners should focus on breeder quality and health guarantees rather than solely on price.
+            </p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-lightBg p-8 rounded-xl">
+                    <h2 class="text-2xl font-semibold mb-6">Price History</h2>
+                    <div class="bg-white p-4 rounded-lg h-[300px]">
+                        <canvas id="priceHistoryChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-lightBg p-8 rounded-xl">
+                    <h2 class="text-2xl font-semibold mb-6">Price Distribution</h2>
+                    <div class="bg-white p-4 rounded-lg h-[300px]">
+                        <canvas id="priceDistributionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Regional Market Analysis -->
+    <section class="bg-white shadow-md py-16 mb-16">
+        <div class="max-w-7xl mx-auto px-8">
+            <h2 class="text-2xl font-semibold mb-6">Regional Market Analysis</h2>
+            <p class="text-mutedText text-lg mb-12 max-w-4xl">
+                Golden Retriever puppy prices and availability vary significantly across different UK regions. Understanding these regional differences can help you make an informed decision about where and when to buy your puppy.
+            </p>
+
+            <!-- UK Price Heat Map -->
+            <div class="bg-lightBg p-8 rounded-xl mb-12">
+                <h3 class="text-xl font-semibold mb-6">Price Variations by Region</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-lg h-[400px]">
+                        <canvas id="ukHeatMap"></canvas>
+                    </div>
+                    <div class="space-y-4">
+                        <h4 class="font-semibold mb-4">Regional Price Overview</h4>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center p-3 bg-lightBg rounded-lg">
+                                <span>Greater London</span>
+                                <span class="font-semibold text-primary">£800 - £1,200</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-lightBg rounded-lg">
+                                <span>South East</span>
+                                <span class="font-semibold text-primary">£700 - £1,000</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-lightBg rounded-lg">
+                                <span>South West</span>
+                                <span class="font-semibold text-primary">£600 - £900</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-lightBg rounded-lg">
+                                <span>Midlands</span>
+                                <span class="font-semibold text-primary">£550 - £850</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-lightBg rounded-lg">
+                                <span>North England</span>
+                                <span class="font-semibold text-primary">£500 - £800</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-lightBg rounded-lg">
+                                <span>Scotland</span>
+                                <span class="font-semibold text-primary">£550 - £900</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-lightBg rounded-lg">
+                                <span>Wales</span>
+                                <span class="font-semibold text-primary">£500 - £850</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Supply and Demand -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Breeder Density Map -->
+                <div class="bg-lightBg p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-6">Breeder Density</h3>
+                    <div class="bg-white p-4 rounded-lg h-[300px]">
+                        <canvas id="breederDensityMap"></canvas>
+                    </div>
+                    <div class="mt-4 text-sm text-mutedText">
+                        Darker regions indicate higher concentration of registered breeders
+                    </div>
+                </div>
+
+                <!-- Best Times to Buy -->
+                <div class="bg-lightBg p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-6">Best Times to Buy</h3>
+                    <div class="space-y-4">
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold mb-2">Peak Season</h4>
+                            <p class="text-mutedText">Spring (March-May)</p>
+                            <p class="text-sm text-mutedText mt-2">Higher prices but more choice</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold mb-2">Off-Peak Season</h4>
+                            <p class="text-mutedText">Autumn (September-November)</p>
+                            <p class="text-sm text-mutedText mt-2">Better prices but limited availability</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold mb-2">Market Insights</h4>
+                            <ul class="text-sm text-mutedText list-disc pl-4 space-y-2">
+                                <li>Prices typically peak during school holidays</li>
+                                <li>More competitive rates in rural areas</li>
+                                <li>Higher prices near major cities</li>
+                                <li>Seasonal variations affect availability</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Findings -->
+            <div class="bg-primary/10 p-6 rounded-xl">
+                <h4 class="font-semibold mb-4">Key Market Insights</h4>
+                <ul class="space-y-3 text-mutedText">
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-primary mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span>London and South East command premium prices due to higher living costs and demand</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-primary mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span>Rural areas often offer better value but may require more travel</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-primary mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span>Highest breeder density found in agricultural regions</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-primary mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span>Price variations of up to 40% between regions</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Comparison by Seller Type -->
+    <section class="bg-white shadow-md py-16 mb-16">
+        <div class="max-w-7xl mx-auto px-8">
+            <h2 class="text-2xl font-semibold mb-6">Comparison by Seller Type</h2>
+            <p class="text-mutedText text-lg mb-12 max-w-4xl">
+                In the UK, Golden Retriever puppy prices differ significantly between KC (Kennel Club) registered and non-registered sellers. KC-registered breeders typically charge higher prices due to strict breeding standards, comprehensive health testing, and documented pedigrees. Non-registered sellers often offer lower-priced puppies, but may lack the same health guarantees and breed verification. The price gap reflects differences in breeding quality, traceability, and adherence to professional breeding standards.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Non-Breeders Card -->
+                <div class="bg-lightBg p-6 rounded-xl">
+                    <h3 class="text-xl mb-4">Average prices by non-breeders</h3>
+                    <div class="bg-white p-4 rounded-lg">
+                        <div class="text-3xl font-semibold text-primary mb-2">£550</div>
+                        <div class="text-sm text-mutedText">Private sellers and rehoming</div>
+                    </div>
+                </div>
+                
+                <!-- Breeders Card -->
+                <div class="bg-lightBg p-6 rounded-xl">
+                    <h3 class="text-xl mb-4">Average prices by breeders</h3>
+                    <div class="bg-white p-4 rounded-lg">
+                        <div class="text-3xl font-semibold text-primary mb-2">£850</div>
+                        <div class="text-sm text-mutedText">Professional and registered breeders</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cost of Ownership Section - Add after Demand Trends and before Recommended Puppies -->
+    <section class="bg-white shadow-md py-16 mb-16">
+        <div class="max-w-7xl mx-auto px-8">
+            <h2 class="text-2xl font-semibold mb-6">Cost of Ownership</h2>
+            <p class="text-mutedText text-lg mb-12 max-w-4xl">
+                The purchase price is just the beginning of your investment in a Golden Retriever. Understanding the ongoing costs helps you prepare for long-term financial commitment. Here's a breakdown of expected costs throughout your dog's life.
+            </p>
+
+            <!-- Monthly Cost Overview Card -->
+            <div class="bg-lightBg p-8 rounded-xl mb-12">
+                <h3 class="text-xl font-semibold mb-6">Monthly Cost Overview</h3>
+                <div class="bg-white p-6 rounded-lg">
+                    <div class="text-3xl font-semibold text-primary mb-4">£120 - £150</div>
+                    <div class="text-sm text-mutedText">Average monthly maintenance cost</div>
+                </div>
+            </div>
+
+            <!-- Detailed Cost Breakdown -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Insurance Card -->
+                <div class="bg-lightBg p-6 rounded-xl">
+                    <div class="flex items-start mb-4">
+                        <svg class="w-6 h-6 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                        <div>
+                            <h4 class="font-semibold mb-2">Insurance</h4>
+                            <p class="text-mutedText text-sm mb-3">Monthly premium for comprehensive coverage</p>
+                            <div class="text-primary font-semibold">£30 - £45</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Food Card -->
+                <div class="bg-lightBg p-6 rounded-xl">
+                    <div class="flex items-start mb-4">
+                        <svg class="w-6 h-6 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h18v18H3V3z"/>
+                        </svg>
+                        <div>
+                            <h4 class="font-semibold mb-2">Food</h4>
+                            <p class="text-mutedText text-sm mb-3">High-quality food and treats</p>
+                            <div class="text-primary font-semibold">£40 - £60</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Veterinary Care Card -->
+                <div class="bg-lightBg p-6 rounded-xl">
+                    <div class="flex items-start mb-4">
+                        <svg class="w-6 h-6 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                        <div>
+                            <h4 class="font-semibold mb-2">Veterinary Care</h4>
+                            <p class="text-mutedText text-sm mb-3">Regular check-ups and vaccinations</p>
+                            <div class="text-primary font-semibold">£25 - £35</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Training Card -->
+                <div class="bg-lightBg p-6 rounded-xl">
+                    <div class="flex items-start mb-4">
+                        <svg class="w-6 h-6 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                        </svg>
+                        <div>
+                            <h4 class="font-semibold mb-2">Training</h4>
+                            <p class="text-mutedText text-sm mb-3">Classes and ongoing training</p>
+                            <div class="text-primary font-semibold">£30 - £50</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grooming Card -->
+                <div class="bg-lightBg p-6 rounded-xl">
+                    <div class="flex items-start mb-4">
+                        <svg class="w-6 h-6 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"/>
+                        </svg>
+                        <div>
+                            <h4 class="font-semibold mb-2">Grooming</h4>
+                            <p class="text-mutedText text-sm mb-3">Professional grooming and supplies</p>
+                            <div class="text-primary font-semibold">£35 - £45</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Miscellaneous Card -->
+                <div class="bg-lightBg p-6 rounded-xl">
+                    <div class="flex items-start mb-4">
+                        <svg class="w-6 h-6 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                        </svg>
+                        <div>
+                            <h4 class="font-semibold mb-2">Miscellaneous</h4>
+                            <p class="text-mutedText text-sm mb-3">Toys, accessories, and unexpected costs</p>
+                            <div class="text-primary font-semibold">£20 - £40</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- First Year Costs Notice -->
+            <div class="bg-primary/10 p-6 rounded-xl mt-12">
+                <h4 class="font-semibold mb-2">First Year Costs</h4>
+                <p class="text-mutedText">
+                    Expect higher costs in the first year (approximately £2,000 - £2,500) due to initial vaccinations, 
+                    puppy training classes, equipment purchases, and spaying/neutering procedures.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Recommended Puppies -->
+    <section class="bg-white shadow-md py-16 mb-16">
+        <div class="max-w-7xl mx-auto px-8">
+            <h2 class="text-2xl font-semibold mb-8">Recommended Golden Retriever Puppies</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
+                    <div class="aspect-square">
+                        <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-semibold mb-2">KC Registered Golden Retriever Puppies</h3>
+                        <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
+                        <div class="text-sm text-mutedText mb-2">London</div>
+                        <div class="text-lg font-semibold text-primary">£850</div>
+                    </div>
+                </a>
+                <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
+                    <div class="aspect-square">
+                        <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-semibold mb-2">Beautiful Golden Retriever Pups</h3>
+                        <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
+                        <div class="text-sm text-mutedText mb-2">Manchester</div>
+                        <div class="text-lg font-semibold text-primary">£750</div>
+                    </div>
+                </a>
+                <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
+                    <div class="aspect-square">
+                        <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-semibold mb-2">Golden Retriever Puppies Ready Now</h3>
+                        <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
+                        <div class="text-sm text-mutedText mb-2">Birmingham</div>
+                        <div class="text-lg font-semibold text-primary">£800</div>
+                    </div>
+                </a>
+                <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
+                    <div class="aspect-square">
+                        <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-semibold mb-2">Pedigree Golden Retriever Puppies</h3>
+                        <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
+                        <div class="text-sm text-mutedText mb-2">Liverpool</div>
+                        <div class="text-lg font-semibold text-primary">£900</div>
+                    </div>
+                </a>
+                <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
+                    <div class="aspect-square">
+                        <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-semibold mb-2">Golden Retriever Puppies - Health Tested</h3>
+                        <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
+                        <div class="text-sm text-mutedText mb-2">Bristol</div>
+                        <div class="text-lg font-semibold text-primary">£950</div>
+                    </div>
+                </a>
+                <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
+                    <div class="aspect-square">
+                        <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-semibold mb-2">Family Raised Golden Retriever Pups</h3>
+                        <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
+                        <div class="text-sm text-mutedText mb-2">Leeds</div>
+                        <div class="text-lg font-semibold text-primary">£800</div>
+                    </div>
+                </a>
+                <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
+                    <div class="aspect-square">
+                        <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-semibold mb-2">Golden Retriever Puppies - KC Registered</h3>
+                        <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
+                        <div class="text-sm text-mutedText mb-2">Edinburgh</div>
+                        <div class="text-lg font-semibold text-primary">£875</div>
+                    </div>
+                </a>
+                <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
+                    <div class="aspect-square">
+                        <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-semibold mb-2">Golden Retriever Puppies Ready in 2 Weeks</h3>
+                        <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
+                        <div class="text-sm text-mutedText mb-2">Glasgow</div>
+                        <div class="text-lg font-semibold text-primary">£825</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Quick Links -->
+    <section class="bg-white shadow-md py-16 mb-16">
+        <div class="max-w-7xl mx-auto px-8">
+            <h2 class="text-2xl font-semibold text-center mb-12">Quick Links</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-lightBg p-8 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-6">Price Filtered Pages</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="#" class="block bg-white px-4 py-3 rounded-lg transition-all hover:text-primary hover:translate-x-1">
+                                Golden Retriever Puppies under £500
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="block bg-white px-4 py-3 rounded-lg transition-all hover:text-primary hover:translate-x-1">
+                                Golden Retriever Puppies £500 - £750
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="block bg-white px-4 py-3 rounded-lg transition-all hover:text-primary hover:translate-x-1">
+                                Golden Retriever Puppies £750 - £1,000
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="block bg-white px-4 py-3 rounded-lg transition-all hover:text-primary hover:translate-x-1">
+                                Golden Retriever Puppies £1,000 - £1,250
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="block bg-white px-4 py-3 rounded-lg transition-all hover:text-primary hover:translate-x-1">
+                                Golden Retriever Puppies £1,250 - £1,500
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="block bg-white px-4 py-3 rounded-lg transition-all hover:text-primary hover:translate-x-1">
+                                Golden Retriever Puppies £1,500 - £1,750
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="block bg-white px-4 py-3 rounded-lg transition-all hover:text-primary hover:translate-x-1">
+                                Golden Retriever Puppies £1,750 - £2,000
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="block bg-white px-4 py-3 rounded-lg transition-all hover:text-primary hover:translate-x-1">
+                                Golden Retriever Puppies £2,000 - £2,500
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="block bg-white px-4 py-3 rounded-lg transition-all hover:text-primary hover:translate-x-1">
+                                Golden Retriever Puppies £2,500 - £3,000
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="block bg-white px-4 py-3 rounded-lg transition-all hover:text-primary hover:translate-x-1">
+                                Golden Retriever Puppies over £3,000
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-lightBg p-8 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-6">Other Breed Price Guides</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="#" class="block bg-white px-4 py-3 rounded-lg transition-all hover:text-primary hover:translate-x-1">
+                                Labrador Retriever Price Guide
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="block bg-white px-4 py-3 rounded-lg transition-all hover:text-primary hover:translate-x-1">
+                                French Bulldog Price Guide
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="block bg-white px-4 py-3 rounded-lg transition-all hover:text-primary hover:translate-x-1">
+                                German Shepherd Price Guide
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="block bg-white px-4 py-3 rounded-lg transition-all hover:text-primary hover:translate-x-1">
+                                Cockapoo Price Guide
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="block bg-white px-4 py-3 rounded-lg transition-all hover:text-primary hover:translate-x-1">
+                                Cocker Spaniel Price Guide
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="block bg-white px-4 py-3 rounded-lg transition-all hover:text-primary hover:translate-x-1">
+                                Dachshund Price Guide
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="block bg-white px-4 py-3 rounded-lg transition-all hover:text-primary hover:translate-x-1">
+                                Chihuahua Price Guide
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="block bg-white px-4 py-3 rounded-lg transition-all hover:text-primary hover:translate-x-1">
+                                Pug Price Guide
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="block bg-white px-4 py-3 rounded-lg transition-all hover:text-primary hover:translate-x-1">
+                                Border Collie Price Guide
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="block bg-white px-4 py-3 rounded-lg transition-all hover:text-primary hover:translate-x-1">
+                                Staffordshire Bull Terrier Price Guide
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Price History Chart
+            const priceHistoryCtx = document.getElementById('priceHistoryChart').getContext('2d');
+            new Chart(priceHistoryCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [{
+                        label: 'Average Price',
+                        data: [550, 575, 600, 590, 610, 625, 640, 650, 630, 620, 600, 599],
+                        borderColor: '#0a6638',
+                        backgroundColor: 'rgba(10, 102, 56, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `£${context.raw}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            title: {
+                                display: true,
+                                text: 'Price (£)'
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return '£' + value;
+                                }
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: '2023'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Price Distribution Chart
+            const priceDistributionCtx = document.getElementById('priceDistributionChart').getContext('2d');
+            new Chart(priceDistributionCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['£0-300', '£301-500', '£501-700', '£701-900', '£901-1100', '£1101+'],
+                    datasets: [{
+                        label: 'Number of Listings',
+                        data: [5, 15, 35, 25, 15, 5],
+                        backgroundColor: 'rgba(10, 102, 56, 0.7)',
+                        borderColor: '#0a6638',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.raw}% of listings`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Percentage of Listings'
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Price Range'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // UK Regional Price Variations Chart
+            const ukHeatMapCtx = document.getElementById('ukHeatMap').getContext('2d');
+            new Chart(ukHeatMapCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Greater London', 'South East', 'South West', 'Midlands', 'North England', 'Scotland', 'Wales'],
+                    datasets: [{
+                        label: 'Minimum Price',
+                        data: [800, 700, 600, 550, 500, 550, 500],
+                        backgroundColor: 'rgba(10, 102, 56, 0.4)',
+                        borderColor: '#0a6638',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Maximum Price',
+                        data: [1200, 1000, 900, 850, 800, 900, 850],
+                        backgroundColor: 'rgba(10, 102, 56, 0.8)',
+                        borderColor: '#0a6638',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'bottom'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `£${context.raw}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Price (£)',
+                                color: '#595143'
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Breeder Density Chart
+            const breederDensityCtx = document.getElementById('breederDensityMap').getContext('2d');
+            new Chart(breederDensityCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Greater London', 'South East', 'South West', 'Midlands', 'North England', 'Scotland', 'Wales'],
+                    datasets: [{
+                        data: [25, 20, 15, 12, 10, 8, 10],
+                        backgroundColor: [
+                            'rgba(10, 102, 56, 0.9)',
+                            'rgba(10, 102, 56, 0.8)',
+                            'rgba(10, 102, 56, 0.7)',
+                            'rgba(10, 102, 56, 0.6)',
+                            'rgba(10, 102, 56, 0.5)',
+                            'rgba(10, 102, 56, 0.4)',
+                            'rgba(10, 102, 56, 0.3)'
+                        ],
+                        borderColor: '#ffffff',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                boxWidth: 15,
+                                padding: 15
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.label}: ${context.raw}% of breeders`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
