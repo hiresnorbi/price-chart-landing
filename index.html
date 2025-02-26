@@ -23,12 +23,253 @@
             }
         }
     </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&display=swap');
+
+        * {
+            font-family: inherit;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 20px;
+            background-color: #f5f3f0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            color: #171711;
+        }
+
+        .content-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .secondary-title {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1.625rem;
+            font-weight: 600;
+            line-height: 32px;
+            color: #171711;
+            margin: 16px 0;
+        }
+
+        .main-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-section {
+            margin-top: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .content-container {
+                padding: 0 16px;
+            }
+            
+            .image-section {
+                margin-top: 16px;
+            }
+        }
+
+        .header {
+            background-color: #FFFEF5;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .price-section {
+            background-color: white;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .price-title {
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1.625rem;
+            font-weight: 600;
+            color: #171711;
+            margin-bottom: 16px;
+        }
+
+        .price-info {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #171711;
+        }
+
+        .price-change {
+            color: #0A6638;
+            font-weight: 500;
+        }
+
+        .price-period {
+            color: #595959;
+            font-size: 0.875rem;
+        }
+
+        .view-puppies-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #0A6638;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.2s;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .view-puppies-btn:hover {
+            background-color: #085a31;
+        }
+
+        .arrow-icon {
+            transition: transform 0.2s;
+        }
+
+        .view-puppies-btn:hover .arrow-icon {
+            transform: translateX(4px);
+        }
+
+        @media (max-width: 768px) {
+            .price-section {
+                padding: 16px;
+            }
+
+            .price-title {
+                font-size: 1.25rem;
+            }
+
+            .price {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Desktop styles */
+        .price-comparison {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .price-card {
+            background-color: #f5f3f0;
+            padding: 24px;
+            border-radius: 12px;
+        }
+
+        /* Mobile optimization */
+        @media (max-width: 768px) {
+            .price-comparison {
+                display: flex;
+                scroll-snap-type: x mandatory;
+                overflow-x: auto;
+                gap: 16px;
+                padding: 8px 0;
+                margin: 0 -8px;
+                -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            }
+
+            .price-card {
+                scroll-snap-align: start;
+                min-width: 280px;
+                flex-shrink: 0;
+                margin: 0 8px;
+            }
+
+            /* Hide scrollbar but keep functionality */
+            .price-comparison::-webkit-scrollbar {
+                display: none;
+            }
+            
+            .price-comparison {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        }
+    </style>
 </head>
 <body class="bg-lightBg text-textColor">
-    <!-- 1. Main header with price -->
-    <h1 class="max-w-7xl mx-auto px-8 py-12 text-4xl font-bold text-primary md:text-5xl">
-        Golden Retriever puppies average price
-    </h1>
+    <!-- Add this at the top of your body tag -->
+    <header class="header">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-[57px] w-full">
+                <!-- Left side with menu and logo -->
+                <div class="flex items-center flex-shrink-0 space-x-4">
+                    <!-- Hamburger Menu Button -->
+                    <button type="button" class="menu-button flex-shrink-0" onclick="toggleMenu()" aria-label="Main Menu Toggle">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+
+                    <!-- Logo -->
+                    <a href="/" class="flex-shrink-0">
+                        <img src="./public/images/logo.c2e9c32d94.svg" alt="" class="h-8 w-auto">
+                    </a>
+                </div>
+
+                <!-- Right side -->
+                <div class="flex items-center space-x-4 flex-shrink-0">
+                    <!-- Search Icon -->
+                    <a href="/search" class="icon-button flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </a>
+
+                    <!-- Messages Icon -->
+                    <a href="/messages" class="icon-button flex-shrink-0">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+                        </svg>
+                    </a>
+
+                    <!-- New Advert Button -->
+                    <a href="/new-advert" class="new-advert-button">
+                        <!-- Large plus icon (shown on desktop) -->
+                        <svg class="plus-icon-big hidden md:block" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <!-- Small plus icon (shown on mobile) -->
+                        <svg class="plus-icon-small md:hidden" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M9 3v12M3 9h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <!-- Text content -->
+                        <span class="advert-text-desktop hidden md:block">New Advert</span>
+                        <span class="advert-text-mobile md:hidden">New Ad</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden">
+            <!-- Menu content here -->
+        </div>
+    </header>
 
     <header class="bg-white shadow-md py-8 mb-12">
         <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-10">
@@ -39,12 +280,18 @@
             </div>
             <div class="flex items-center">
                 <div class="text-center w-full">
-                    <h2 class="text-2xl mb-4">Average Price</h2>
+                    <h2 class="text-2xl mb-4">Golden Retriever Average Price</h2>
                     <div class="mb-2">
                         <span class="text-6xl font-bold text-primary">£599</span>
                         <span class="ml-2 px-3 py-1 bg-primary/10 text-primary rounded-md">+2.3%</span>
                     </div>
-                    <p class="text-mutedText">vs last month</p>
+                    <p class="text-mutedText mb-6">vs last month</p>
+                    <a href="/sale/puppies/golden-retriever/" class="view-puppies-btn">
+                        View Golden Retriever Puppies For Sale
+                        <svg class="arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
@@ -77,7 +324,7 @@
     <!-- 3. Regional Market Analysis -->
     <section class="bg-white shadow-md py-16 mb-16">
         <div class="max-w-7xl mx-auto px-8">
-            <h2 class="text-2xl font-semibold mb-6">Regional Market Analysis</h2>
+            <h2 class="text-2xl font-semibold mb-6">Golden Retriever Prices by Region</h2>
             <p class="text-mutedText text-lg mb-12 max-w-4xl">
                 Golden Retriever puppy prices and availability vary significantly across different UK regions. Understanding these regional differences can help you make an informed decision about where and when to buy your puppy.
             </p>
@@ -205,9 +452,11 @@
             <p class="text-mutedText text-lg mb-12 max-w-4xl">
                 In the UK, Golden Retriever puppy prices differ significantly between KC (Kennel Club) registered and non-registered sellers. KC-registered breeders typically charge higher prices due to strict breeding standards, comprehensive health testing, and documented pedigrees. Non-registered sellers often offer lower-priced puppies, but may lack the same health guarantees and breed verification. The price gap reflects differences in breeding quality, traceability, and adherence to professional breeding standards.
             </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- Price Cards Container -->
+            <div class="price-comparison">
                 <!-- Non-Breeders Card -->
-                <div class="bg-lightBg p-6 rounded-xl">
+                <div class="price-card">
                     <h3 class="text-xl mb-4">Average prices by non-breeders</h3>
                     <div class="bg-white p-4 rounded-lg">
                         <div class="text-3xl font-semibold text-primary mb-2">£550</div>
@@ -216,13 +465,23 @@
                 </div>
                 
                 <!-- Breeders Card -->
-                <div class="bg-lightBg p-6 rounded-xl">
+                <div class="price-card">
                     <h3 class="text-xl mb-4">Average prices by breeders</h3>
                     <div class="bg-white p-4 rounded-lg">
                         <div class="text-3xl font-semibold text-primary mb-2">£850</div>
                         <div class="text-sm text-mutedText">Professional and registered breeders</div>
                     </div>
                 </div>
+            </div>
+            
+            <!-- CTA Button -->
+            <div class="text-center">
+                <a href="/sale/puppies/golden-retriever/" class="view-puppies-btn inline-flex" style="background-color: #ffe500; color: black;">
+                    Find your Golden Retriever Breeder
+                    <svg class="arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </section>
@@ -345,96 +604,108 @@
     <!-- 6. Recommended Puppies -->
     <section class="bg-white shadow-md py-16 mb-16">
         <div class="max-w-7xl mx-auto px-8">
-            <h2 class="text-2xl font-semibold mb-8">Recommended Golden Retriever Puppies</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Card 1 -->
-                <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
-                    <div class="aspect-square">
-                        <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-semibold mb-2">KC Registered Golden Retriever Puppies</h3>
-                        <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
-                        <div class="text-sm text-mutedText mb-2">London</div>
-                        <div class="text-lg font-semibold text-primary">£850</div>
-                    </div>
-                </a>
-                <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
-                    <div class="aspect-square">
-                        <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-semibold mb-2">Beautiful Golden Retriever Pups</h3>
-                        <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
-                        <div class="text-sm text-mutedText mb-2">Manchester</div>
-                        <div class="text-lg font-semibold text-primary">£750</div>
-                    </div>
-                </a>
-                <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
-                    <div class="aspect-square">
-                        <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-semibold mb-2">Golden Retriever Puppies Ready Now</h3>
-                        <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
-                        <div class="text-sm text-mutedText mb-2">Birmingham</div>
-                        <div class="text-lg font-semibold text-primary">£800</div>
-                    </div>
-                </a>
-                <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
-                    <div class="aspect-square">
-                        <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-semibold mb-2">Pedigree Golden Retriever Puppies</h3>
-                        <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
-                        <div class="text-sm text-mutedText mb-2">Liverpool</div>
-                        <div class="text-lg font-semibold text-primary">£900</div>
-                    </div>
-                </a>
-                <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
-                    <div class="aspect-square">
-                        <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-semibold mb-2">Golden Retriever Puppies - Health Tested</h3>
-                        <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
-                        <div class="text-sm text-mutedText mb-2">Bristol</div>
-                        <div class="text-lg font-semibold text-primary">£950</div>
-                    </div>
-                </a>
-                <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
-                    <div class="aspect-square">
-                        <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-semibold mb-2">Family Raised Golden Retriever Pups</h3>
-                        <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
-                        <div class="text-sm text-mutedText mb-2">Leeds</div>
-                        <div class="text-lg font-semibold text-primary">£800</div>
-                    </div>
-                </a>
-                <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
-                    <div class="aspect-square">
-                        <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-semibold mb-2">Golden Retriever Puppies - KC Registered</h3>
-                        <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
-                        <div class="text-sm text-mutedText mb-2">Edinburgh</div>
-                        <div class="text-lg font-semibold text-primary">£875</div>
-                    </div>
-                </a>
-                <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
-                    <div class="aspect-square">
-                        <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-semibold mb-2">Golden Retriever Puppies Ready in 2 Weeks</h3>
-                        <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
-                        <div class="text-sm text-mutedText mb-2">Glasgow</div>
-                        <div class="text-lg font-semibold text-primary">£825</div>
-                    </div>
+            <div>
+                <h2 class="text-2xl font-semibold mb-8">Recommended Golden Retriever Puppies</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                    <!-- Card 1 -->
+                    <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
+                        <div class="aspect-square">
+                            <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-semibold mb-2">KC Registered Golden Retriever Puppies</h3>
+                            <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
+                            <div class="text-sm text-mutedText mb-2">London</div>
+                            <div class="text-lg font-semibold text-primary">£850</div>
+                        </div>
+                    </a>
+                    <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
+                        <div class="aspect-square">
+                            <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-semibold mb-2">Beautiful Golden Retriever Pups</h3>
+                            <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
+                            <div class="text-sm text-mutedText mb-2">Manchester</div>
+                            <div class="text-lg font-semibold text-primary">£750</div>
+                        </div>
+                    </a>
+                    <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
+                        <div class="aspect-square">
+                            <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-semibold mb-2">Golden Retriever Puppies Ready Now</h3>
+                            <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
+                            <div class="text-sm text-mutedText mb-2">Birmingham</div>
+                            <div class="text-lg font-semibold text-primary">£800</div>
+                        </div>
+                    </a>
+                    <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
+                        <div class="aspect-square">
+                            <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-semibold mb-2">Pedigree Golden Retriever Puppies</h3>
+                            <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
+                            <div class="text-sm text-mutedText mb-2">Liverpool</div>
+                            <div class="text-lg font-semibold text-primary">£900</div>
+                        </div>
+                    </a>
+                    <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
+                        <div class="aspect-square">
+                            <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-semibold mb-2">Golden Retriever Puppies - Health Tested</h3>
+                            <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
+                            <div class="text-sm text-mutedText mb-2">Bristol</div>
+                            <div class="text-lg font-semibold text-primary">£950</div>
+                        </div>
+                    </a>
+                    <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
+                        <div class="aspect-square">
+                            <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-semibold mb-2">Family Raised Golden Retriever Pups</h3>
+                            <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
+                            <div class="text-sm text-mutedText mb-2">Leeds</div>
+                            <div class="text-lg font-semibold text-primary">£800</div>
+                        </div>
+                    </a>
+                    <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
+                        <div class="aspect-square">
+                            <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-semibold mb-2">Golden Retriever Puppies - KC Registered</h3>
+                            <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
+                            <div class="text-sm text-mutedText mb-2">Edinburgh</div>
+                            <div class="text-lg font-semibold text-primary">£875</div>
+                        </div>
+                    </a>
+                    <a href="#" class="block bg-white rounded-xl shadow-md overflow-hidden transition-transform hover:-translate-y-1">
+                        <div class="aspect-square">
+                            <img src="./public/images/golden-retriever.jpg" alt="Golden Retriever puppy" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-semibold mb-2">Golden Retriever Puppies Ready in 2 Weeks</h3>
+                            <div class="text-sm text-mutedText mb-1">Golden Retriever</div>
+                            <div class="text-sm text-mutedText mb-2">Glasgow</div>
+                            <div class="text-lg font-semibold text-primary">£825</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Added CTA Button with increased top margin -->
+            <div class="text-center mt-8">
+                <a href="/sale/puppies/golden-retriever/" class="view-puppies-btn inline-flex">
+                    View Golden Retriever Puppies For Sale
+                    <svg class="arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12h14m-7-7l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </a>
             </div>
         </div>
@@ -558,6 +829,46 @@
             </div>
         </div>
     </section>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Dogs and Puppies For Sale</h3>
+                <a href="/sale/puppies/cocker-spaniel/">Cocker Spaniel for sale</a>
+                <a href="/sale/puppies/cockapoo/">Cockapoo for sale</a>
+                <a href="/sale/puppies/labrador-retriever/">Labrador Retriever for sale</a>
+                <a href="/sale/puppies/german-shepherd/">German Shepherd for sale</a>
+                <a href="/sale/puppies/french-bulldog/">French Bulldog for sale</a>
+                <a href="/sale/puppies/dachshund/">Dachshund for sale</a>
+                <a href="/sale/puppies/cavapoo/">Cavapoo for sale</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Cats and Kittens For Sale</h3>
+                <a href="/sale/kittens/maine-coon/">Maine Coon for sale</a>
+                <a href="/sale/kittens/british-shorthair/">British Shorthair for sale</a>
+                <a href="/sale/kittens/ragdoll/">Ragdoll for sale</a>
+                <a href="/sale/kittens/bengal/">Bengal for sale</a>
+                <a href="/sale/kittens/sphynx/">Sphynx for sale</a>
+                <a href="/sale/kittens/persian/">Persian for sale</a>
+                <a href="/sale/kittens/savannah/">Savannah for sale</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Information</h3>
+                <a href="/about/">About us</a>
+                <a href="/privacy/">Privacy Policy</a>
+                <a href="/support/">Support</a>
+                <a href="/press/">Press</a>
+                <a href="/terms/">Terms & Conditions</a>
+                <a href="/advertise/">Why advertise with us</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© Copyright 2025 - Pets4Homes</p>
+            <p>Pets4Homes.co.uk use cookies on this site to enhance your user experience. Use of this website and other services constitutes acceptance of the Pets4Homes Terms of Conditions and Privacy and Cookie Policy.</p>
+        </div>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -768,6 +1079,113 @@
                 }
             });
         });
+
+        // Add this script for menu toggle functionality
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
     </script>
+
+    <style>
+    .new-advert-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background-color: #0A6638;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        transition: background-color 0.2s ease;
+        white-space: nowrap;
+        height: 40px;
+    }
+
+    .new-advert-button:hover {
+        background-color: #085a31;
+    }
+
+    .plus-icon-big, .plus-icon-small {
+        flex-shrink: 0;
+    }
+
+    .advert-text-desktop, .advert-text-mobile {
+        font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+        .new-advert-button {
+            padding: 6px 12px;
+            height: 32px;
+        }
+    }
+
+    .footer {
+        background-color: #042615;
+        padding: 48px 0 24px;
+        margin-top: 48px;
+    }
+
+    .footer-content {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 32px;
+    }
+
+    .footer-section {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .footer-section h3 {
+        color: #ffffff;
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+
+    .footer-section a {
+        color: #fffacc;
+        text-decoration: none;
+        font-size: 0.875rem;
+        line-height: 1.5;
+    }
+
+    .footer-section a:hover {
+        color: #ffffff;
+    }
+
+    .footer-bottom {
+        max-width: 1280px;
+        margin: 32px auto 0;
+        padding: 24px 24px 0;
+        border-top: 1px solid #ffffff1a;
+        color: #ffffff99;
+        font-size: 0.75rem;
+        line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+        .content-container {
+            padding: 0 16px;
+        }
+        
+        .footer-content {
+            grid-template-columns: 1fr;
+            padding: 0 16px;
+        }
+        
+        .footer-bottom {
+            padding: 24px 16px 0;
+        }
+    }
+    </style>
 </body>
 </html> 
